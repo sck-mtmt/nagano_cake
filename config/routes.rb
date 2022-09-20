@@ -1,19 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-    root to:"homes#top",as: "admin"
-  end
    devise_for :admin,skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -22,7 +7,10 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   namespace :admin do
+    root to:"homes#top"
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :edit, :show, :update, :create]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
