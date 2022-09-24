@@ -2,8 +2,8 @@
 <p>ジャンル一覧・追加</p>
 
   <%= form_with model: @genre, url:'/admin/genres',method: :post do |f| %>
-  <%= f.label :ジャンル名%>
-  <%= f.text_field :name%>
+  <%= f.label :ジャンル名 %>
+  <%= f.text_field :name %>
   <%= f.submit'新規登録', class: "btn btn-success" %>
   <% end %>
 
