@@ -7,9 +7,11 @@
   <h4>商品説明</h4>
   <%=f.text_area :introduction %><br>
   <h4>ジャンル</h4>
-  <%= f.collection_select :item_id,Item.all, :id, :name, prompt=>"選択してください" %>
+  <%= form_with model: @item, url: admin_items_path, do |form| %>
+  <%= form.select :item_id, @item.map{ |item| [@genre,item.name] } %><br>
+  <% end %>
   <h4>税抜価格</h4>
-  <%= f.file_field :price %>
+  <%= f.file_field :price %>円<br>
   <h4>販売ステータス</h4>
    <% if @item.is_active %>
     <%= link_to '販売中', new_admin_item_path(item.id, item: {is_active:true}),method: :put %>
