@@ -2,16 +2,13 @@
   <table class="table">
   <tbody>
   <tr>
-  <td><%= link_to user_path(@user) do %>
-      <%= image_tag @user.get_image(100,100) %><br>
-      <%= @user.name %></td>
-      <% end %>
-  <td><%= link_to @book.title, book_path(@book.id) %></td>
-  <td><%= @book.body %></td>
-   <% if @book.user == current_user %>
-  <td><%= link_to "Edit",edit_book_path(@book.id), class: 'btn btn-success' %></td>
-  <td><%= link_to "Destroy", book_path(@book.id), method: :delete, data:{confirm:"Are you sure?" } , class: 'btn btn-danger'%></td>
-  <% end %>
+  <td>
+  <td></td>
+  <td></td>
+
+  <td></td>
+  <td></td>
+
   </tr>
   </tbody>
   </table>

@@ -1,22 +1,24 @@
 <h1>商品新規登録</h1>
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item, url:admin_items_path,method: :post do |f| %>
   <h4>商品画像</h4>
   <%= f.file_field :image,accent:"image/*" %><br>
   <h4>商品名</h4>
   <%= f.text_field :name %><br>
   <h4>商品説明</h4>
-  <%=f.text_area :introduction %><br>
+  <%=f.text_area :instroduction %><br>
+
   <h4>ジャンル</h4>
-  <%= form_with model: @item, url: admin_items_path, do |form| %>
-  <%= form.select :item_id, @item.map{ |item| [@genre,item.name] } %><br>
-  <% end %>
+  <%= f.select:genre_id,Genre.all.map{ |genre| [genre.name, genre.id] } %><br>
+
   <h4>税抜価格</h4>
-  <%= f.file_field :price %>円<br>
+  <%= f.text_field :price %>円<br>
   <h4>販売ステータス</h4>
+  <%= @item.is_active ? '販売中' : '販売停止中' %>
    <% if @item.is_active %>
-    <%= link_to '販売中', new_admin_item_path(item.id, item: {is_active:true}),method: :put %>
+    <%= link_to '販売中', new_admin_item_path(@item.id, item: {is_active:true}),method: :put %>
     <% else %>
-    <%= link_to '販売停止中',new_admin_item_path(item.id, item: {is_active:false}),method: :put %>
+    <%= link_to '販売停止中',new_admin_item_path(@item.id, item: {is_active:false}),method: :put %>
    <% end %><br>
-  <%= f.submit'新規登録'%>
+  <%= f.submit'新規登録', class: "btn btn-success" %>
 <% end %>
+
