@@ -5,9 +5,9 @@
   <h4>商品名</h4>
   <%= f.text_field :name %><br>
   <h4>商品説明</h4>
-  <%=f.text_area :introduction %><br>
+  <%=f.text_area :instroduction %><br>
   <h4>ジャンル</h4>
-  <%= f.collection_select :item_id,Item.all, :id, :name, prompt=>"選択してください" %>
+  <%= f.select:genre_id,Genre.all.map{ |genre| [genre.name, genre.id] } %><br>
   <h4>税抜価格</h4>
   <%= f.file_field :price %>円
   <h4>販売ステータス</h4>
