@@ -1,5 +1,5 @@
 <h1>商品編集</h1>
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item,url: admin_item_path(@item.id),method: :patch do |f| %>
   <h4>商品画像</h4>
   <%= f.file_field :image,accent:"image/*" %><br>
   <h4>商品名</h4>
@@ -9,12 +9,10 @@
   <h4>ジャンル</h4>
   <%= f.select:genre_id,Genre.all.map{ |genre| [genre.name, genre.id] } %><br>
   <h4>税抜価格</h4>
-  <%= f.file_field :price %>円
+  <%= f.text_field :price %>円
   <h4>販売ステータス</h4>
-   <% if @item.is_active %>
-    <%= link_to '販売中', new_admin_item_path(item.id, item: {is_active:true}),method: :put %>
-    <% else %>
-    <%= link_to '販売停止中',new_admin_item_path(item.id, item: {is_active:false}),method: :put %>
-   <% end %><br>
+   <%= f.radio_button :is_active,true %>販売中
+   <%= f.radio_button :is_active,false %>販売停止中
+   <br>
   <%= f.submit'変更を保存', class: "btn btn-success"%>
 <% end %>
