@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
-    get 'customers/my_page' => 'customers#update'
+    patch 'customers/my_page' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#destoy'
-    get 'customers/withdraw' => 'customers#destroy'
+    delete 'customers/withdraw' => 'customers#destroy'
     resources :items, only: [:index, :show]
   end
     root to:'public/homes#top'

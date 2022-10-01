@@ -1,6 +1,7 @@
-<h1>会員一覧</h1>
-<table>
+<h4>会員一覧</h4>
+<table class="table">
   <thead>
+    <% @customers.each do |customer| %>
     <tr>
       <th>会員ID</th>
       <th>氏名</th>
@@ -10,10 +11,17 @@
   </thead>
   <tbody>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%=@customer.current_customer %></td>
+      <td><%=@customer.last_name %><%=@customer.first_name %></td>
+      <td><%=@customer.email %></td>
+      <td>
+        <% if customer.is_deleted %>
+        有効
+        <% else %>
+        退会
+        <% end %>
+      </td>
     </tr>
+    <% end %>
   </tbody>
-
+<%= paginate @customers %>
