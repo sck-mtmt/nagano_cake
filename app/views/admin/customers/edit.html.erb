@@ -1,6 +1,10 @@
-<h4><%= f.text_field :last_name %><%= f.text_field :first_name %>の会員情報編集</h4>
-<%= form_with model: @customer,url: admin_customers_path,method: :patch do |f| %>
-  <table class="my_page">
+<h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+<%= form_with model: @customer,url: admin_customer_path,method: :patch do |f| %>
+  <table>
+    <tr>
+      <th>会員ID</th>
+      <td><%= @customer.id %></td>
+    </tr>
     <tr>
     　<th>氏名</th>
       <td><%= f.text_field :last_name %>
@@ -31,7 +35,7 @@
       <th>会員ステータス</th>
       <td>
         <%= f.radio_button :is_deleted,true %>有効
-        <%= f.radio_button:is_deletede,false %>退会
+        <%= f.radio_button :is_deleted,false %>退会
    　    </td>
     </tr>
 </table>
