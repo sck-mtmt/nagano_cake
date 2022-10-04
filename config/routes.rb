@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
     patch 'customers/my_page' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#destoy'
+    delete 'customers/unsubscribe' => 'customers#destoy'
     delete 'customers/withdraw' => 'customers#destroy'
     resources :items, only: [:index, :show]
   end
