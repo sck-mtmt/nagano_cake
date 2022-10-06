@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
     patch 'customers/my_page' => 'customers#update'
-    delete 'customers/unsubscribe' => 'customers#destoy'
-    delete 'customers/withdraw' => 'customers#destroy'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
     resources :items, only: [:index, :show]
   end
     root to:'public/homes#top'
