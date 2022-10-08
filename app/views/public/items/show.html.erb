@@ -2,17 +2,16 @@
 <%= image_tag @item.image, size: "300x200" %>
 <table class="table">
   <tr>
-    <th>商品名</th>
     <td><%= @item.name %></td>
   </tr>
   <tr>
-    <th>商品説明</th>
     <td><%= @item.instroduction %></td>
   </tr>
   <tr>
-    <th>税込価格（税抜価格）</th>
-    <td><%= @item.price %></td>
+    <td>￥<%= @item.price %>（税込）</td>
   </tr>
 </table>
-<%= f.select :amount, [['いち',1], ['に',2], ['さん',3]] %>
-<%= link_to "カートに入れる",public_cart_items(@item.id), class: 'btn btn-success' %>
+
+<%= f.select :amount, *[1..10] %>
+<%= f.submit "カートに入れる",public_cart_items_path(@item.id), class: "btn btn-success" %>
+<% end %>
