@@ -5,8 +5,9 @@ class Public::ItemsController < ApplicationController
   def show
     @item= Item.find(params[:id])
   end
-end
+
 private
   def item_params
    params.require(:item).permit(:name, :instroduction, :price, :image, :genre_id)
   end
+end
