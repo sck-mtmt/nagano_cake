@@ -1,5 +1,5 @@
 <h4>ショッピングカート</h4>
-<p><%= link_to "カートを空にする", public_cart_items_destroy_all_path, class: 'btn btn-danger' %></p>
+<p><%= link_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete, class: 'btn btn-danger' %></p>
 <table class="table">
   <thead>
     <tr>
@@ -14,23 +14,25 @@
 
     <% @cart_items.each do |cart_item| %>
     <tr>
-      <td><%= cart_item.item_id.name %></td>
-      <td><%= (cart_item.price * 1.1).floor %></td>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.with_tax_price %></td>
       <td><%= cart_item.amount %></td>
-      <td><% (cart_item.price * 1.1).floor * cart_item.amount %></td>
-      <td><%= link_to "削除する", destroy_public_cart_item_path(@cart_item.id), method: :delete, class: 'btn btn-danger' %></td>
+      <td><%= cart_item.subtotal %></td>
+      <td><%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete, class: 'btn btn-danger' %></td>
     </tr>
     <% end %>
   </tbody>
 
-  <p><%= link_to "買い物を続ける", public_items_path, class: 'btn btn-primary' %></p>
-
 <table class="table">
   <tr>
     <th>合計金額</th>
-    <%= form_with model: @cart_items, url:new_public_order_path,method: :post do |f| %>
-    <td> <% @合計金額 +=  (cart_item.price * 1.1).floor * cart_item.amount %></td>
+    <% total=0 %>
+    <% @cart_items.each do |cart_item| %>
+    <% total += cart_item.subtotal %>
+    <% end %>
+    <td><%= total %></td>
   </tr>
   </table>
-  <%= f.submit  "情報入力に進む", class: 'btn btn-success' %>
-  <% end %>
+  <%= link_to "買い物を続ける", public_items_path, class: 'btn btn-primary' %>
+   <%= link_to "情報入力に進む", new_public_order_path, class: 'btn btn-success' %>
+
