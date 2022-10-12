@@ -1,8 +1,8 @@
 <h1>注文情報入力</h1>
 <%= form_with model: @order, url:public_orders_confirm_path,method: :post do |f| %>
 <p>支払方法</p>
-   <%= f.radio_button :orders.payment_method %>クレジットカード
-   <%= f.radio_button :orders.payment_method %>銀行振込
+   <%= f.radio_button :payment_method, :credit_card %>クレジットカード
+   <%= f.radio_button :payment_method, :transfer%>銀行振込
 <p>お届け先</p>
    <%= f.radio_button :address %>ご自身の住所
 
