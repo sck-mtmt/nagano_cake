@@ -12,4 +12,10 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  def address_display_1
+    '〒' + postal_code + address
+  end
+  def address_display_2
+    last_name + first_name
+  end
 end
