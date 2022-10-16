@@ -35,4 +35,3 @@ private
       params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 end
-
