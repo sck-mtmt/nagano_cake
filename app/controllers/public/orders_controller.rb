@@ -30,9 +30,21 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order=Order.new(@order_params)
-    @order.save
-    redirect_to public_orders_confirm_path
+
+    @order=Order.new(order_params)
+    @order.customer_id=current_customer.id
+    @order.save!
+
+    current_customer.cart_items.each do |cart_item|
+      @order_details=OrderDetail.new
+      @order_details.item_id=cart_item.item_id
+      @order_details.amount=cart_item.amount
+      @order_details.price=(cart_item.item.price * 1.1).floor
+      @order_details.order_id=@order.id
+      @order_details.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to public_orders_complete_path
   end
 
   def index
@@ -40,8 +52,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order=Order.find(params[:id])
+
   end
+
   private
   def order_params
       params.require(:order).permit(:customer_id, :postal_code, :address, :name,

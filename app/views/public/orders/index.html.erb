@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>注文日</th>
-      <th>配送日</th>
+      <th>配送先</th>
       <th>注文商品</th>
       <th>支払金額</th>
       <th>ステータス</th>
@@ -13,11 +13,11 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td><%= order.create_at %></td>
-      <td><%= order.update_at %></td>
+      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= order.address %></td>
       <td><%= order.name %></td>
-      <td><%= order.total_paymont %></td>
-      <td><%= order.status %></td>
+      <td><%= order.total_paymont %>円</td>
+      <td><%= order.status_i18n %></td>
       <td><%= link_to "表示する", public_order_path(order.id), class: 'btn btn-success' %></td>
     </tr>
     <% end %>
