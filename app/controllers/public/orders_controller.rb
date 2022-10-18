@@ -52,7 +52,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-
+   @order= Order.find(params[:id])
+   @cart_items=current_customer.cart_items
+   @order.shipping_cost=800
   end
 
   private
