@@ -41,20 +41,21 @@ class Public::OrdersController < ApplicationController
       @order_details.amount=cart_item.amount
       @order_details.price=(cart_item.item.price * 1.1).floor
       @order_details.order_id=@order.id
-      @order_details.save
+      @order_details.save!
     end
     current_customer.cart_items.destroy_all
     redirect_to public_orders_complete_path
   end
 
   def index
-    @orders=Order.all
+    @orders=current_customer.orders
   end
 
   def show
    @order= Order.find(params[:id])
-   @cart_items=current_customer.cart_items
    @order.shipping_cost=800
+   @order_details=@order.order_details
+
   end
 
   private
