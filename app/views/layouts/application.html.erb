@@ -13,70 +13,75 @@
   </head>
   <body>
     <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="logo_area">
+
+        </div>
+  <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
 <% if admin_signed_in? %>
       <div class="collapse navbar-collapse"
         id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-3">
-       <%= link_to "商品一覧", admin_items_path %>
+       <%= link_to "商品一覧", admin_items_path, class:"btn btn-light" %>
       </li>
 
       <li class="nav-item mr-3">
-          <%= link_to "会員一覧", admin_customers_path %>
+          <%= link_to "会員一覧", admin_customers_path, class:"btn btn-light" %>
       </li>
 
       <li class="nav-item mr-3">
-         <%= link_to "注文履歴一覧", admin_root_path %>
+         <%= link_to "注文履歴一覧", admin_root_path, class:"btn btn-light" %>
       </li>
 
       <li class="nav-item mr-3">
-         <%= link_to "ジャンル一覧", admin_genres_path %>
+         <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light" %>
       </li>
 
       <li class="nav-item mr-3">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          <%= link_to "ログアウト", destroy_admin_session_path, class:"btn btn-light", method: :delete %>
       </li>
       </ul>
       </div>
 <% elsif customer_signed_in? %>
+
       <div class="collapse navbar-collapse"
         id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-3">
-        <%= link_to "マイページ", public_customers_my_page_path %>
+        <%= link_to "マイページ", public_customers_my_page_path, class:"btn btn-light" %>
       </li>
       <li class="nav-item mr-3">
-          <%= link_to "商品一覧", public_items_path %>
+          <%= link_to "商品一覧", public_items_path, class:"btn btn-light" %>
       </li>
       <li class="nav-item mr-3">
-         <%= link_to "カート", public_cart_items_path %>
+         <%= link_to "カート", public_cart_items_path, class:"btn btn-light" %>
       </li>
       <li class="nav-item mr-3">
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          <%= link_to "ログアウト", destroy_customer_session_path, class:"btn btn-light", method: :delete %>
       </li>
       </ul>
       </div>
 <% else %>
       <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-3">
-         <%= link_to "About", public_about_path %>
+         <%= link_to "About", public_about_path, class:"btn btn-light" %>
       </li>
       <li class="nav-item mr-3">
-         <%= link_to "商品一覧", public_items_path %>
+         <%= link_to "商品一覧", public_items_path, class:"btn btn-light" %>
       </li>
       <li class="nav-item mr-3">
-           <%= link_to "新規登録", new_customer_registration_path %>
+           <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-light" %>
       </li>
       <li class="nav-item mr-3">
-          <%= link_to "ログイン", new_customer_session_path %>
+          <%= link_to "ログイン", new_customer_session_path, class:"btn btn-light" %>
       </li>
       </ul>
 <% end %>
       </nav>
       </div>
       </header>
+
 
       <footer>
       </footer>

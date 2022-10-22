@@ -1,4 +1,4 @@
-<h4>商品編集</h4>
+<h5><span>商品編集</span></h5>
 <%= form_with model: @item,url: admin_item_path(@item.id),method: :patch do |f| %>
   <h4>商品画像</h4>
   <%= f.file_field :image,accent:"image/*" %><br>
