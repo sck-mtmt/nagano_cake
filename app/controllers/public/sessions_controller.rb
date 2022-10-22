@@ -6,7 +6,7 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
     @customer = current_customer
     if @customer
-      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to new_customer_session_path
       else

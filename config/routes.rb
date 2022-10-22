@@ -11,8 +11,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :edit, :show, :update, :create]
     resources :customers, only: [:index, :show, :edit, :update]
-    get 'orders/confirm'=> 'order#confirm'
-    resources :order, only: [ :update]
+    resources :orders, only: [ :show, :update]
     resources :order_details, only: [:update]
   end
   namespace :public do

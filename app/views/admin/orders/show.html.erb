@@ -2,25 +2,29 @@
 <table>
 <tr>
 <th>購入者</th>
-<td><%= @order.current_customer.name %></td>
-
+<td><%= @order.customer.last_name %>
+    <%= @order.customer.first_name %></td>
+</tr>
+<tr>
 <th>注文日</th>
 <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-
+</tr>
+<tr>
 <th>配送先</th>
 <td>〒<%= @order.postal_code %>
       <%= @order.address %><br>
       <%= @order.name %></td>
-
+</tr>
+<tr>
 <th>支払方法</th>
 <td><%= @order.payment_method_i18n %></td>
-
+</tr>
+<tr>
 <th>注文ステータス</th>
-<td><%= form_with model: order, url: admin_orders_confirm_path, method: :patch do |f| %>
-      <%= f.select :status, Order.status.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-      <%= f.submit "変更", class: "btn btn-success" %>
+<td><%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+      <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+      <%= f.submit "更新", class: "btn btn-success" %>
     <% end %></td>
-
 </tr>
 </table>
 <table class="table">
@@ -35,20 +39,22 @@
   </thead>
   <tbody>
     <tr>
-      <% total=0 %>
-      <% @order_detail.each do |order_detail| %>
+      <% @order_details.each do |order_detail| %>
       <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.item.with_tax_price %></td>
+      <td><%= order_detail.price %></td>
       <td><%= order_detail.amount %></td>
-      <td><%= order_detail.item.with_tax_price * cart_item.amount %></td>
-      <% total += cart_item.item.with_tax_price * cart_item.amount %>
-      <td><%= form_with model: order_detail, url: admin_orders_confirm_path, method: :patch do |f| %>
-      <%= f.select :making_status, OrderDetail.making_status.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
-      <%= f.submit "変更", class: "btn btn-success" %>
+      <% total=0 %>
+      <% order_detail.price * order_detail.amount %>
+      <% total += order_detail.price * order_detail.amount %>
+      <td><%= total %></td>
+      <td><%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
+      <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+      <%= f.submit "更新", class: "btn btn-success" %>
       <% end %></td>
       <% end %>
     </tr>
   </tbody>
+  </table>
 <table>
   <tr>
     <th>送料</th>
@@ -56,11 +62,13 @@
   </tr>
   <tr>
     <th>商品合計</th>
-    <td><%= total %></td>
+    <td><%= @order.total_paymont %></td>
   </tr>
     <tr>
     <th>請求金額</th>
-    <td><%= @order.total_paymont = total + @order.shipping_cost %></td>
+        <% total=0 %>
+        <% total += @order.total_paymont + @order.shipping_cost %>
+    <td><%= total %></td>
   </tr>
   </table>
  <p>支払方法</p>
