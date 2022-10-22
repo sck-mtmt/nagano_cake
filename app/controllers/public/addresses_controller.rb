@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
   def index
     @address=Address.new
-    @addresses=Address.all
+    @addresses=Address.all.order(created_at: "DESC")
   end
 
   def create

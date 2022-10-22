@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items=CartItem.all
+    @cart_items=CartItem.all.order(created_at: "DESC")
   end
   def create
     @cart_item=CartItem.new(cart_item_params)
