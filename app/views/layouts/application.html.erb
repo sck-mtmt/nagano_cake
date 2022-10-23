@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <div class="logo_area">
+      <div class="navbar-brand">
 
         </div>
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -76,15 +76,15 @@
       <li class="nav-item mr-3">
           <%= link_to "ログイン", new_customer_session_path, class:"btn btn-light" %>
       </li>
-      </ul>
 <% end %>
+      </ul>
       </nav>
       </div>
       </header>
-
-
+      <main>
+    <%= yield %>
+        </main>
       <footer>
       </footer>
-    <%= yield %>
   </body>
 </html>

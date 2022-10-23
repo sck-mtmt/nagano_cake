@@ -3,7 +3,13 @@
 <table>
   <tr>
     <th>商品画像</th>
-    <td><%= f.file_field :image,accent:"image/*" %></td>
+    <td><%= f.file_field :image,accept:"image/*" %></td>
+      <%#=label :image, "ファイルを選択", class: "image_input_btn" %>
+      <%#= f.file_field :image,accept:"image/*", class: "image_form" %>
+      <%#=label :image_file, "ファイルを選択", class: "btn btn-outline-dark" %>
+      <%#= f.label :image,"ファイルを選択", class: "btn btn-outline-dark" do %>
+      <%#= f.file_field :image, style:"display:none;" %>
+      <%# end %>
   </tr>
   <tr>
     <th>商品名</th>
