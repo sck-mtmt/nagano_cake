@@ -1,9 +1,19 @@
-<h5><span>商品一覧</span></h5>
-<h3><%= link_to new_admin_item_path do %>
-    <i class="fa-solid fa-plus"></i>
-    <% end %></h3>
+<div class="container">
+      <div class="row">
+      <div class="col-2">
+      <h5><span>商品一覧</span></h5>
+      </div>
+       <div class="col-9"></div>
+        <div class="col-1">
+        <h3><%= link_to new_admin_item_path do %>
+        <i class="fa-solid fa-plus"></i>
+        <% end %></h3>
+        </div>
+      </div>
+
 <table class="table">
   <thead>
+    <span>
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
@@ -11,6 +21,7 @@
       <th>ジャンル</th>
       <th>ステータス</th>
     </tr>
+    </span>
   </thead>
   <tbody>
     <% @items.each do |item| %>
@@ -33,3 +44,4 @@
   </tbody>
 </table>
 <%= paginate @items %>
+</div>
