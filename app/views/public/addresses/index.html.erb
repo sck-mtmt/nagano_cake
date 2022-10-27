@@ -36,14 +36,16 @@
     </div>
     <div class="col-1"></div>
     <div class="col-1">
+      <div>
       <%= f.submit'新規登録', class: "btn btn-success" %>
+      </div>
     </div>
   </div>
 <% end %>
-
-
-
-<table class="table">
+  <div class="row">
+  <!--<div class="col-1"></div>-->
+  <div class="col-9">
+<table class="table" border="1">
   <thead>
     <tr>
       <th>郵便番号</th>
@@ -55,14 +57,17 @@
   <tbody>
     <% @addresses.each do |address| %>
     <tr>
-      <td><%= address.postal_code %></td>
-      <td><%= address.addresses %></td>
-      <td><%= address.name %></td>
-      <td>
-<%= link_to "編集する", edit_public_address_path(address.id), class: 'btn btn-success' %>
-<%= link_to "削除する", public_address_path(address.id), method: :delete, class: 'btn btn-danger' %>
-
+      <td width="100"><%= address.postal_code %></td>
+      <td width="680"><%= address.addresses %></td>
+      <td width="170"><%= address.name %></td>
+      <td width="330">
+          <%= link_to "編集する", edit_public_address_path(address.id), class: 'btn btn-success' %>
+          <%= link_to "削除する", public_address_path(address.id), method: :delete, class: 'btn btn-danger' %>
       </td>
     </tr>
     <% end %>
   </tbody>
+</table>
+  </div>
+  <div class="col-3"></div>
+</div>

@@ -12,79 +12,87 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header>
-      <div class="logo_image">
-      <img class="logo_image" src="app/aseets/images/nagano_rogo.jpg" />
-      </div>
+<header>
+<div class="container">
+ <div class="row">
+    <div class="logo-1">
+    <%= image_tag 'nagano_rogo.jpg',width: '80%', height: '50px' %>
+    </div>
+        <div class="col-10">
+          <nav class="navbar navbar-expand-lg navbar-light">
+    <% if admin_signed_in? %>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <li class="nav-item list-item">
+           <%= link_to "商品一覧", admin_items_path, class:"btn btn-light mt-2" %>
+          </li>
 
-  <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
-<% if admin_signed_in? %>
-      <div class="collapse navbar-collapse"
-        id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-      <li class="nav-item mr-3">
-       <%= link_to "商品一覧", admin_items_path, class:"btn btn-light" %>
-      </li>
+          <li class="nav-item list-item">
+              <%= link_to "会員一覧", admin_customers_path, class:"btn btn-light  mt-2" %>
+          </li>
 
-      <li class="nav-item mr-3">
-          <%= link_to "会員一覧", admin_customers_path, class:"btn btn-light" %>
-      </li>
+          <li class="nav-item list-item">
+             <%= link_to "注文履歴一覧", admin_root_path, class:"btn btn-light  mt-2" %>
+          </li>
 
-      <li class="nav-item mr-3">
-         <%= link_to "注文履歴一覧", admin_root_path, class:"btn btn-light" %>
-      </li>
+          <li class="nav-item list-item">
+             <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light  mt-2" %>
+          </li>
 
-      <li class="nav-item mr-3">
-         <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light" %>
-      </li>
+          <li class="nav-item list-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, class:"btn btn-light mt-2", method: :delete %>
+          </li>
+          </ul>
+          </div>
+    <% elsif customer_signed_in? %>
 
-      <li class="nav-item mr-3">
-          <%= link_to "ログアウト", destroy_admin_session_path, class:"btn btn-light", method: :delete %>
-      </li>
-      </ul>
-      </div>
-<% elsif customer_signed_in? %>
-     ようこそ！<%= current_customer %>さん！
-      <div class="collapse navbar-collapse"
-        id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-      <li class="nav-item mr-3">
-        <%= link_to "マイページ", public_customers_my_page_path, class:"btn btn-light" %>
-      </li>
-      <li class="nav-item mr-3">
-          <%= link_to "商品一覧", public_items_path, class:"btn btn-light" %>
-      </li>
-      <li class="nav-item mr-3">
-         <%= link_to "カート", public_cart_items_path, class:"btn btn-light" %>
-      </li>
-      <li class="nav-item mr-3">
-          <%= link_to "ログアウト", destroy_customer_session_path, class:"btn btn-light", method: :delete %>
-      </li>
-      </ul>
-      </div>
-<% else %>
-      <ul class="navbar-nav ml-auto">
-      <li class="nav-item mr-3">
-         <%= link_to "About", public_about_path, class:"btn btn-light" %>
-      </li>
-      <li class="nav-item mr-3">
-         <%= link_to "商品一覧", public_items_path, class:"btn btn-light" %>
-      </li>
-      <li class="nav-item mr-3">
-           <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-light" %>
-      </li>
-      <li class="nav-item mr-3">
-          <%= link_to "ログイン", new_customer_session_path, class:"btn btn-light" %>
-      </li>
-<% end %>
-      </ul>
-      </nav>
-      </div>
-      </header>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="welcome">
+                ようこそ、<%= current_customer.last_name %>さん！
+            </li>
+
+              <li class="nav-item list-item">
+              <%= link_to "マイページ", public_customers_my_page_path, class:"btn btn-light" %>
+              </li>
+              <li class="nav-item list-item">
+              <%= link_to "商品一覧", public_items_path, class:"btn btn-light" %>
+              </li>
+              <li class="nav-item list-item">
+              <%= link_to "カート", public_cart_items_path, class:"btn btn-light" %>
+              </li>
+              <li class="nav-item list-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, class:"btn btn-light", method: :delete %>
+              </li>
+          </ul>
+          </div>
+    <% else %>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <li class="nav-item list-item ">
+             <%= link_to "About", public_about_path, class:"btn btn-light" %>
+          </li>
+          <li class="nav-item list-item">
+             <%= link_to "商品一覧", public_items_path, class:"btn btn-light" %>
+          </li>
+          <li class="nav-item list-item">
+               <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-light" %>
+          </li>
+          <li class="nav-item list-item">
+              <%= link_to "ログイン", new_customer_session_path, class:"btn btn-light" %>
+          </li>
+          </ul>
+          </div>
+    <% end %>
+          </nav>
+        </div>
+    </div>
+ </div>
+</div>
+</header>
       <main>
-    <%= yield %>
-        </main>
+<%= yield %>
+      </main>
       <footer>
       </footer>
   </body>

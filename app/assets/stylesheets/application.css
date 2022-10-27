@@ -17,16 +17,29 @@ header{
    border-bottom: 2px solid;
    margin-bottom:30px;
  }
-.logo_image{
-     height: 20px;
-     width: 50px;
+.welcome{
+    margin-right: 40px;
+    margin-top:15px;
+}
+.logo-1{
+     margin:10px 10px 10px 10px;
 
 }
-span {
+
+.nav-item {
+    margin: 10px 10px;
+    width: 150px;
+    text-align: right;
+}
+
+.list-item a{
+    width: 100%;
+}
+
+span{
   background-color: #F0F0F0;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
 }
-
 main{
     border-bottom:2px solid;
     margin-bottom:100px;
@@ -35,7 +48,6 @@ main{
 .actions{
     margin-bottom: 200px;
     margin-top: 30px;
-    width: 0px 10%;
 }
 
 .actions-1{
@@ -47,10 +59,16 @@ th{
     background-color: #F0F0F0;
     margin-bottom: 20px;
 }
-.login_f{
-    margin-top:30px;
-}
+
 
 .form-g{
     margin-bottom: 3px;
+}
+table{
+     margin-bottom:10px;
+ }
+h6{
+  text-align:center;
+  margin-bottom: 50px;
+  margin-top: 100px;
 }
