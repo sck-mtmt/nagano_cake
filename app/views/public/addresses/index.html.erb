@@ -1,14 +1,45 @@
-<h5><span>配送先登録/一覧</span></h5>
-  <%= form_with model: @address, url:'/public/addresses',method: :post do |f| %>
-  <%= f.label :郵便番号（ハイフンなし） %>
-  <%= f.text_field :postal_code %><br>
-  <%= f.label :住所 %>
-  <%= f.text_field :addresses %><br>
-  <%= f.label :宛名 %>
-  <%= f.text_field :name %>
-
-  <%= f.submit'新規登録', class: "btn btn-success" %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h5><span>配送先登録/一覧</span></h5>
+    </div>
+  </div>
+<%= form_with model: @address, url:'/public/addresses',method: :post do |f| %>
+  <div class="row">
+    <!--<div class="col-1"></div>-->
+    <div class="col-3">
+      <%= f.label :郵便番号（ハイフンなし） %>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <%= f.text_field :postal_code %>
+    </div>
+  </div>
+  <div class="row">
+    <!--<div class="col-1"></div>-->
+    <div class="col-3">
+    <%= f.label :住所 %>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+    <%= f.text_field :addresses %>
+    </div>
+  </div>
+  <div class="row">
+    <!--<div class="col-1"></div>-->
+    <div class="col-4">
+    <%= f.label :宛名 %>
+    </div>
+    <!--<div class="col-1"></div>-->
+    <div class="col-3">
+      <%= f.text_field :name %>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-1">
+      <%= f.submit'新規登録', class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
 
 
 

@@ -13,9 +13,10 @@
   </head>
   <body>
     <header>
-      <div class="navbar-brand">
+      <div class="logo_image">
+      <img class="logo_image" src="app/aseets/images/nagano_rogo.jpg" />
+      </div>
 
-        </div>
   <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
 <% if admin_signed_in? %>
@@ -44,7 +45,7 @@
       </ul>
       </div>
 <% elsif customer_signed_in? %>
-
+     ようこそ！<%= current_customer %>さん！
       <div class="collapse navbar-collapse"
         id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">

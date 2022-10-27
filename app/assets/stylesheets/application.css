@@ -17,6 +17,11 @@ header{
    border-bottom: 2px solid;
    margin-bottom:30px;
  }
+.logo_image{
+     height: 20px;
+     width: 50px;
+
+}
 span {
   background-color: #F0F0F0;
   margin-bottom: 30px;
@@ -30,10 +35,22 @@ main{
 .actions{
     margin-bottom: 200px;
     margin-top: 30px;
+    width: 0px 10%;
 }
 
+.actions-1{
+    margin-bottom: 50px;
+    margin-top: 30px;
+    width: 0px 10%;
+}
 th{
     background-color: #F0F0F0;
     margin-bottom: 20px;
 }
+.login_f{
+    margin-top:30px;
+}
 
+.form-g{
+    margin-bottom: 3px;
+}
