@@ -1,25 +1,33 @@
-<div class="top-image">
- <%#= image_tag 'about.jpg',size: "550x300" %>
- <div class="top-text">
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+  <div class="top-image">
     <p>ようこそ、ながのCAKEへ！<br>
        このサイトは、ケーキ販売のECサイトになります。<br>
        会員でない方も商品の閲覧はできますが、<br>
        購入には会員登録が必要になります。</p>
- </div>
+  </div>
+  </div>
+    <div class="row">
+    <div class="col-3"></div>
+  <div class="top-manu">
+    <h4>新着商品</h4>
+      <table>
+          <tbody>
+          <% @items.first(4).each do |item| %>
+          <td><%= link_to public_item_path(item.id) do %>
+          <%= image_tag item.image, size: "150x100" %><br>
+          <%= item.name %><br>￥<%= item.price %>
+          <% end %></td>
+          <% end %>
+          </tbody>
+      </table>
+  </div>
+  </div>
+      <div class="row">
+    <div class="col-8"></div>
+  <div class="top-link">
+  <p><%= link_to "すべての商品を見る＞", public_items_path %></p>
+  </div>
+  </div>
 </div>
-<div class="top-manu">
-<h4>新着商品</h4>
-<table>
-  <tbody>
-    <tr>
-    <td><%= image_tag 'about.jpg',size: "150x100" %><br>商品名<br>¥0000</td>
-    <td><%= image_tag 'about.jpg',size: "150x100" %><br>商品名<br>¥0000</td>
-    <td><%= image_tag 'about.jpg',size: "150x100" %><br>商品名<br>¥0000</td>
-    <td><%= image_tag 'about.jpg',size: "150x100" %><br>商品名<br>¥0000</td>
-    </tr>
-  </tbody>
- </table>
- </div>
- <div class="top-link">
- <p><%= link_to "すべての商品を見る＞", public_items_path %></p>
- </div>

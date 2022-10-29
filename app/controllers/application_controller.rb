@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 private
 def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
-        admin_items_path
+        admin_root_path
     else
-        public_items_path
+        root_path
     end
 end
 

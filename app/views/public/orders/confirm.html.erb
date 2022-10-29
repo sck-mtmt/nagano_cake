@@ -32,10 +32,10 @@
           </table>
     </div>
     <div class="col-5">
-          <table border="1">
+          <table border="1" width="150" height="100">
               <tr>
-              <th>送料</th>
-              <td><%= @order.shipping_cost %></td>
+              <th width="75" height="50">送料</th>
+              <td width="75" height="50"><%= @order.shipping_cost %></td>
               </tr>
               <tr>
               <th>商品合計</th>
@@ -48,12 +48,20 @@
           </table>
     </div>
   </div>
-      <p>支払方法</p>
+      <div class="row">
+        <div class="address">
+          <strong>支払方法</strong>
+         </div>
           <%= @order.payment_method_i18n %><br>
-      <p>お届け先</p>
+      </div>
+      <div class="row">
+        <div class="address">
+      <strong>お届け先</strong>
+        </div>
           〒<%= @order.postal_code %>
           <%= @order.address %><br>
           <%= @order.name %>
+      </div>
     <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
        <%= f.hidden_field :customer_id %>
        <%= f.hidden_field :postal_code %>

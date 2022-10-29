@@ -35,17 +35,21 @@ header{
 /*public-top*/
 .top-link{
   text-align: right;
-  margin-right: 40px;
+  margin-right: 10px;
 }
 .top-manu{
   text-align: left;
 }
 .top-image {
-  /*width: 300px;*/
-  /*height: 100px;*/
-  background-image: url(images/about.jpg);
-  background-size: auto;
+  width: 600px;
+  height: 300px;
+  background-image: url(cafe-top.jpg);
+  background-size: contain;
   background-position: center;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+  text-align: center;
+  padding-top: 100px;
+  color: #fff;
 }
 .top-text{
   /*width: 100%;*/
@@ -128,4 +132,24 @@ h6{
 }
 .big{
       margin-bottom:20px ;
+}
+.item-index{
+  display: inline-flex;
+  margin: 20px;
+
+}
+.item-id{
+    padding-top: 20px;
+}
+.pagination {
+  justify-content: center;
+  margin-top: 30px;
+}
+.address{
+    margin-right: 20px;
+}
+.item-all-customer{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 30px;
 }

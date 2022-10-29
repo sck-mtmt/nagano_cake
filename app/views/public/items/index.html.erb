@@ -1,11 +1,23 @@
-<h5><span>商品一覧</span></h5>
-<table class="table">
-    <% @items.each do |item| %>
-    <tr><%= image_tag item.image, size: "150x100" %></tr><br>
-    <tr><%= link_to public_item_path(item.id) do %>
-          <%= item.name %>
-          <% end %></tr><br>
-    <tr>￥<%= item.price %></tr><br>
+<div class="container">
+    <div class="row">
+      <div class="col-2">
+        <h3>商品一覧</h3>
+      </div>
+    </div>
+  <div class="row">
+    <% @items.first(8).each do |item| %>
+        <div class="col-3">
+          <div class="item-all-customer">
+            <%=image_tag item.image, size: "200x150" %><br>
+            <%= link_to public_item_path(item.id) do %>
+            <%= item.name %>
+            <% end %><br>
+            ￥<%= item.price %><br>
+          </div>
+        </div>
     <% end %>
-</table>
+  </div>
+
 <%= paginate @items %>
+
+</div>
