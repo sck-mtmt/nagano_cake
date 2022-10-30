@@ -17,17 +17,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
               <% total=0 %>
               <% @cart_items.each do |cart_item| %>
+              <tr>
               <td><%= image_tag cart_item.item.image, size: "50x25" %>
                   <%= cart_item.item.name %></td>
               <td><%= cart_item.item.with_tax_price %></td>
               <td><%= cart_item.amount %></td>
               <td><%= cart_item.item.with_tax_price * cart_item.amount %></td>
               <% total += cart_item.item.with_tax_price * cart_item.amount %>
-              <% end %>
               </tr>
+              <% end %>
             </tbody>
           </table>
     </div>
@@ -49,14 +49,14 @@
     </div>
   </div>
       <div class="row">
-        <div class="address">
+          <div class="address">
           <strong>支払方法</strong>
-         </div>
+          </div>
           <%= @order.payment_method_i18n %><br>
       </div>
       <div class="row">
         <div class="address">
-      <strong>お届け先</strong>
+        <strong>お届け先</strong>
         </div>
           〒<%= @order.postal_code %>
           <%= @order.address %><br>
